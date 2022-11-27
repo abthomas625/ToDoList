@@ -31,4 +31,7 @@ body{
     border-radius: 8px ;
 }
 
+.completedTask{
+    text-decoration: line-through;
+}
 

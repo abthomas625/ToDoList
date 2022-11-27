@@ -3,10 +3,15 @@
 <div class="wrapper">
   <div class="items">
     <div *ngFor="let item of items, index as i">
-      <p *ngIf="item.completed" class="marker" style="text-decoration: line-through">{{item.task}}</p>
-      <div *ngIf="item.completed === false">
-      <p class="marker">{{item.task}} <app-completetask [existingItems]="items" [indexToComplete]=" i"></app-completetask></p>
+      <p *ngIf="item.completed" class="marker" ngClass="completedTask">{{item.task}}<button (click)="DeleteToDo(i)">X</button></p>
+      <div *ngIf="!item.completed">
+      <p class="marker">{{item.task}} 
+        <app-completetask [existingItems]="items" [indexToComplete]="i"></app-completetask>
+        <button *ngIf="!item.isEditing" (click)="EditToDo(i)">Edit</button>
+        <button *ngIf="item.isEditing" (click)="EditToDo(i)">Finish editing</button>
+      </p>
       </div>
+      <input *ngIf="item.isEditing" type="text" id="EditTask" [(ngModel)]="item.task"/>
     </div>
   </div>
   

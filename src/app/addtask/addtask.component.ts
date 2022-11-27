@@ -10,7 +10,7 @@ export class AddtaskComponent implements OnInit {
   
   @Input() existingItems : ToDo[] = [];
 
-  newItem : ToDo = {task : "", completed : false};
+  newItem : ToDo = {task : "", completed : false, isEditing : false};
 
   constructor() { }
 
